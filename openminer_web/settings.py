@@ -58,6 +58,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
+    'mathfilters',
+    'rest_framework',
+    'rest_framework_swagger',
     'homepage',
     'contentdb'
 ]
@@ -87,6 +91,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'openminer_web.contexts.resolver_context_processor'
             ],
         },
     },
@@ -152,7 +157,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = (
-   os.path.join(BASE_DIR, "static/dashboard"),
+   os.path.join(BASE_DIR, "static/homepage"),
 )
 
 # Upload

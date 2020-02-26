@@ -1,0 +1,38 @@
+<div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+    <header class="demo-drawer-header">
+        <img src="/static/images/user.png" class="demo-avatar">
+        <div class="demo-avatar-dropdown">
+            {% if user.is_authenticated %}
+                <span>{{ user.email }}</span>
+            {% else %}
+                <span>Anonymous</span>
+            {% endif %}
+            <div class="mdl-layout-spacer"></div>
+            <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                <i class="material-icons" role="presentation">arrow_drop_down</i>
+                <span class="visuallyhidden">Accounts</span>
+            </button>
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+                {# {% if user.is_authenticated %} #}
+                {#     <li style="padding: 0;" class="mdl-menu__item"><a href="{% url 'logout' %}?app={{ app_name }}" style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%; margin: 0; padding: 0 16px 0 16px;">Logout</a></li> #}
+                {# {% else %} #}
+                {#     <li style="padding: 0;" class="mdl-menu__item"><a href="{% url 'login' %}?app={{ app_name }}" style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%; margin: 0; padding: 0 16px 0 16px;">Login</a></li> #}
+                {# {% endif %} #}
+            </ul>
+        </div>
+    </header>
+    <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+        <a class="mdl-navigation__link" href="{% url 'homepage:home' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
+
+        {% if user.is_staff %}
+            {# <a class="mdl-navigation__link" href="{% url 'homepage:user_list' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Users</a> #}
+        {% endif %}
+
+        <div class="mdl-layout-spacer"></div>
+
+        {% if user.is_superuser %}
+            <a class="mdl-navigation__link" href="/admin"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">lock</i>Admin</a>
+        {% endif %}
+    </nav>
+</div>
+
