@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class Mod(models.Model):
     name = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="mods")
+    date = models.DateTimeField(default=timezone.now)
 
     class Meta:
         verbose_name = "Mod"
@@ -29,6 +30,7 @@ class ModVersion(models.Model):
 class TexturePack(models.Model):
     name = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="texture_packs")
+    date = models.DateTimeField(default=timezone.now)
 
     class Meta:
         verbose_name = "Texture pack"

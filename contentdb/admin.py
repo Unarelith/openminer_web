@@ -3,9 +3,9 @@ from django.contrib import admin
 from .models import Mod, ModVersion, TexturePack, TexturePackVersion
 
 class ModAdmin(admin.ModelAdmin):
-    list_display   = ('name', 'user')
+    list_display   = ('name', 'user', 'date')
     list_filter    = ('name', 'user')
-    ordering       = ('name', 'user')
+    ordering       = ('name', 'user', 'date')
     search_fields  = ('name', 'user')
 
 class ModVersionAdmin(admin.ModelAdmin):
@@ -15,9 +15,9 @@ class ModVersionAdmin(admin.ModelAdmin):
     search_fields  = ('mod', 'version')
 
 class TexturePackAdmin(admin.ModelAdmin):
-    list_display   = ('name', 'user')
+    list_display   = ('name', 'user', 'date')
     list_filter    = ('name', 'user')
-    ordering       = ('name', 'user')
+    ordering       = ('name', 'user', 'date')
     search_fields  = ('name', 'user')
 
 class TexturePackVersionAdmin(admin.ModelAdmin):

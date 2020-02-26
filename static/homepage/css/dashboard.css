@@ -1,0 +1,222 @@
+html, body {
+	font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+
+/* CSS tools */
+.mc-hidden {
+	display: none;
+}
+
+.mc-fs14 {
+	font-size: 14px;
+}
+
+/* Slim MDL text field */
+.mc-textfield-slim {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.mc-textfield-slim mdl-textfield__label {
+	top: 2px;
+}
+
+.mc-textfield-slim .mdl-textfield__label:after {
+	bottom: 0px;
+}
+
+/* Small Material icon */
+.mc-small-icon {
+	padding-top: 8px !important;
+	padding-bottom: 2px !important;
+	padding-left: 10px !important;
+	padding-right: 10px !important;
+}
+
+/* Dashboard CSS */
+
+.dashboard-button-add {
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+}
+
+.dashboard-button-add a i {
+	color: #fff;
+}
+
+.dashboard-unselectable {
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none;      /* IE 10+ */
+	user-select: none;          /* Likely future */
+}
+
+.dashboard-cursor-hand {
+	cursor: pointer;
+}
+
+.dashboard-scrollable-zone {
+	overflow-x: auto;
+}
+
+.dashboard-scrollable-zone>table{
+	width: 100%;
+}
+
+.dashboard-avatar {
+	width: 48px;
+	height: 48px;
+	border-radius: 24px;
+}
+
+.dashboard-layout .mdl-layout__header .mdl-layout__drawer-button {
+	color: rgba(0, 0, 0, 0.54);
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.mdl-layout__drawer .avatar {
+	margin-bottom: 16px;
+}
+
+.dashboard-drawer {
+	border: none;
+}
+
+/* iOS Safari specific workaround */
+.dashboard-drawer .mdl-menu__container {
+	z-index: -1;
+}
+.dashboard-drawer .dashboard-navigation {
+	z-index: -2;
+}
+
+/* END iOS Safari specific workaround */
+.dashboard-drawer .mdl-menu .mdl-menu__item {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+.dashboard-drawer-header {
+	box-sizing: border-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-justify-content: flex-end;
+	-ms-flex-pack: end;
+	justify-content: flex-end;
+	padding: 16px;
+	height: 151px;
+}
+
+.dashboard-avatar-dropdown {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	position: relative;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	width: 100%;
+}
+
+.dashboard-navigation {
+	-webkit-flex-grow: 1;
+	-ms-flex-positive: 1;
+	flex-grow: 1;
+}
+
+.dashboard-layout .dashboard-navigation .mdl-navigation__link {
+	display: -webkit-flex !important;
+	display: -ms-flexbox !important;
+	display: flex !important;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	color: rgba(255, 255, 255, 0.56);
+	font-weight: 500;
+}
+
+.dashboard-layout .dashboard-navigation .mdl-navigation__link:hover {
+	background-color: #00BCD4;
+	color: #37474F;
+}
+
+.dashboard-navigation .mdl-navigation__link .material-icons {
+	font-size: 24px;
+	color: rgba(255, 255, 255, 0.56);
+	margin-right: 32px;
+}
+
+.dashboard-content {
+	max-width: 1080px;
+}
+
+.dashboard-charts {
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+.dashboard-cards {
+	-webkit-align-items: flex-start;
+	-ms-flex-align: start;
+	align-items: flex-start;
+	-webkit-align-content: flex-start;
+	-ms-flex-line-pack: start;
+	align-content: flex-start;
+}
+
+.dashboard-cards .dashboard-separator {
+	height: 32px;
+}
+
+.dashboard-cards .mdl-card__title-text {
+	color: white;
+	font-size: 18px;
+	font-weight: 400;
+}
+
+.dashboard-cards .mdl-card__subtitle-text {
+	color: white;
+}
+
+.dashboard-cards .dashboard-value-card-content {
+	font-size: 16px;
+	font-weight: 500;
+	text-align: center;
+}
+
+.dashboard-cards ul {
+	padding: 0;
+}
+
+.dashboard-cards h3 {
+	font-size: 1em;
+}
+
+.dashboard-updates .mdl-card__title {
+	min-height: 200px;
+	background-image: url('/static/images/dog.png');
+	background-position: 90% 100%;
+	background-repeat: no-repeat;
+}
+
+.dashboard-cards .mdl-card__actions a {
+	color: #00BCD4;
+	text-decoration: none;
+}
+

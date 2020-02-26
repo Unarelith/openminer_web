@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}{{ texture_pack.name }}{% endblock %}
+{% block content %}
+    <div class="mdl-grid dashboard-content">
+        <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+            <h4 class="mdl-cell mdl-cell--2-col">Informations</h4>
+            <div class="dashboard-scrollable-zone mdl-cell mdl-cell--12-col">
+                <table border="1" class="mdl-data-table mdl-js-data-table">
+                    <tbody>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric"><b>ID</b></td>
+                            <td class="mdl-data-table__cell--non-numeric">{{ texture_pack.id }}</td>
+                        </tr>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric"><b>Name</b></td>
+                            <td class="mdl-data-table__cell--non-numeric">{{ texture_pack.name }}</td>
+                        </tr>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric"><b>Date</b></td>
+                            <td class="mdl-data-table__cell--non-numeric">{{ texture_pack.date|date:"d/m/Y" }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

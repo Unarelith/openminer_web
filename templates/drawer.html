@@ -1,7 +1,7 @@
-<div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
-    <header class="demo-drawer-header">
-        <img src="/static/images/user.png" class="demo-avatar">
-        <div class="demo-avatar-dropdown">
+<div class="dashboard-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+    <header class="dashboard-drawer-header">
+        <img src="/static/images/user.png" class="dashboard-avatar">
+        <div class="dashboard-avatar-dropdown">
             {% if user.is_authenticated %}
                 <span>{{ user.email }}</span>
             {% else %}
@@ -21,8 +21,8 @@
             </ul>
         </div>
     </header>
-    <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-        <a class="mdl-navigation__link" href="{% url 'homepage:home' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
+    <nav class="dashboard-navigation mdl-navigation mdl-color--blue-grey-800">
+        {% include "drawer_links.html" %}
 
         {% if user.is_staff %}
             {# <a class="mdl-navigation__link" href="{% url 'homepage:user_list' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Users</a> #}

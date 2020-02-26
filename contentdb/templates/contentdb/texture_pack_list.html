@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Texture packs{% endblock %}
+{% block content %}
+    <div class="dashboard-scrollable-zone dashboard-content mdl-grid">
+        <table border="1" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Name</td>
+                    <th class="mdl-data-table__cell--non-numeric" colspan="2">Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for texture_pack in texture_packs %}
+                    <tr onclick="window.location.href = '{% url "contentdb:texture_pack_view" texture_pack.id %}'" style="cursor: pointer;">
+                        <td class="mdl-data-table__cell--non-numeric" style="width: 100%;">
+                            {{ texture_pack.name }}
+                        </td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            {# <a class="mdl-button mdl-button--icon mdl-button--colored" href="{% url 'contentdb:texture_pack_edit' texture_pack.id %}"> #}
+                                <i class="material-icons">edit</i>
+                            {# </a> #}
+                        </td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            {# <a class="mdl-button mdl-button--icon mdl-color-text--red-800" href="{% url 'contentdb:texture_pack_remove' texture_pack.id %}" onclick="return confirm('Are you sure?');"> #}
+                                <i class="material-icons">delete</i>
+                            {# </a> #}
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric" colspan="3">No texture packs.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
