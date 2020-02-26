@@ -63,7 +63,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_swagger',
     'homepage',
-    'contentdb'
+    'contentdb',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -104,9 +105,12 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication', # FIXME
         'rest_framework.authentication.SessionAuthentication',
     ),
+
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
-    )
+    ),
+
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
 }
 
 # Database
