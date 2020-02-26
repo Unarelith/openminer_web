@@ -13,11 +13,11 @@
                 <span class="visuallyhidden">Accounts</span>
             </button>
             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-                {# {% if user.is_authenticated %} #}
-                {#     <li style="padding: 0;" class="mdl-menu__item"><a href="{% url 'logout' %}?app={{ app_name }}" style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%; margin: 0; padding: 0 16px 0 16px;">Logout</a></li> #}
-                {# {% else %} #}
-                {#     <li style="padding: 0;" class="mdl-menu__item"><a href="{% url 'login' %}?app={{ app_name }}" style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%; margin: 0; padding: 0 16px 0 16px;">Login</a></li> #}
-                {# {% endif %} #}
+                {% if user.is_authenticated %}
+                    <li style="padding: 0;" class="mdl-menu__item"><a href="{% url 'homepage:logout' %}?app={{ app_name }}" style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%; margin: 0; padding: 0 16px 0 16px;">Logout</a></li>
+                {% else %}
+                    <li style="padding: 0;" class="mdl-menu__item"><a href="{% url 'homepage:login' %}?app={{ app_name }}" style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%; margin: 0; padding: 0 16px 0 16px;">Login</a></li>
+                {% endif %}
             </ul>
         </div>
     </header>
