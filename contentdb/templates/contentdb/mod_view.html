@@ -17,8 +17,56 @@
                         </tr>
                         <tr>
                             <td class="mdl-data-table__cell--non-numeric"><b>Date</b></td>
-                            <td class="mdl-data-table__cell--non-numeric">{{ mod.date|date:"d/m/Y" }}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{ mod.date|date:'d/m/Y H:m' }}</td>
                         </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="mdl-grid dashboard-content">
+        <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+            <h4 class="mdl-cell mdl-cell--2-col">Versions</h4>
+            <div class="mdl-cell mdl-cell--12-col">
+                <table border="1" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+                    <thead>
+                        <tr>
+                            <th class="mdl-data-table__cell--non-numeric">Name</td>
+                            <th class="mdl-data-table__cell--non-numeric">Date</td>
+                            <th class="mdl-data-table__cell--non-numeric" colspan="3">Actions</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for version in mod.versions.all %}
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric" style="width: 100%;">
+                                    {{ version.name }}
+                                </td>
+                                <td class="mdl-data-table__cell--non-numeric" style="width: 100%;">
+                                    {{ version.date|date:'d/m/Y H:m' }}
+                                </td>
+                                <td class="mdl-data-table__cell--non-numeric">
+                                    <a class="mdl-button mdl-button--icon mdl-button--colored" href="{{ version.doc.url }}">
+                                        <i class="material-icons">cloud_download</i>
+                                    </a>
+                                </td>
+                                <td class="mdl-data-table__cell--non-numeric">
+                                    {# <a class="mdl-button mdl-button--icon mdl-button--colored" href="{% url 'contentdb:mod_version_edit' version.id %}"> #}
+                                        <i class="material-icons">edit</i>
+                                    {# </a> #}
+                                </td>
+                                <td class="mdl-data-table__cell--non-numeric">
+                                    {# <a class="mdl-button mdl-button--icon mdl-color-text--red-800" href="{% url 'contentdb:mod_version_remove' version.id %}" onclick="return confirm('Are you sure?');"> #}
+                                        <i class="material-icons">delete</i>
+                                    {# </a> #}
+                                </td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric" colspan="5">No versions.</td>
+                            </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
