@@ -27,7 +27,7 @@ class ModVersionList(generics.ListAPIView):
 
     def get_object(self):
         mod_id = self.kwargs.get('id')
-        version_id = self.kwargs.get('version_id')
+        version_id = self.kwargs.get('pk')
 
         mod = Mod.objects.get(id=mod_id)
 
@@ -55,7 +55,7 @@ class TexturePackVersionRetrieve(generics.RetrieveAPIView):
 
     def get_object(self):
         id = self.kwargs.get('id')
-        version_id = self.kwargs.get('version_id')
+        version_id = self.kwargs.get('pk')
 
         texture_pack = TexturePack.objects.get(id=id)
 
