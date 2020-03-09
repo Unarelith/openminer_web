@@ -5,108 +5,59 @@ from rest_framework.permissions import IsAuthenticated
 from contentdb.models import EngineVersion, Mod, ModVersion, TexturePack, TexturePackVersion
 from .serializers import EngineVersionSerializer, ModSerializer, ModVersionSerializer, TexturePackSerializer, TexturePackVersionSerializer
 
-class EngineVersionListCreate(generics.ListCreateAPIView):
+class EngineVersionList(generics.ListAPIView):
+    queryset = EngineVersion.objects.all()
     serializer_class = EngineVersionSerializer
 
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = (IsAuthenticated,)
-
-    def get_queryset(self):
-        return EngineVersion.objects.filter()
-
-    def perform_create(self, serializer):
-        serializer.save()
-
-class EngineVersionRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+class EngineVersionRetrieve(generics.RetrieveAPIView):
+    queryset = EngineVersion.objects.all()
     serializer_class = EngineVersionSerializer
 
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = (IsAuthenticated,)
-
-    def get_queryset(self):
-        return EngineVersion.objects.filter()
-
-class ModListCreate(generics.ListCreateAPIView):
+class ModList(generics.ListAPIView):
+    queryset = Mod.objects.all()
     serializer_class = ModSerializer
 
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = (IsAuthenticated,)
-
-    def get_queryset(self):
-        return Mod.objects.filter()
-
-    def perform_create(self, serializer):
-        serializer.save()
-
-class ModRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+class ModRetrieve(generics.RetrieveAPIView):
+    queryset = Mod.objects.all()
     serializer_class = ModSerializer
 
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = (IsAuthenticated,)
-
-    def get_queryset(self):
-        return Mod.objects.filter()
-
-class ModVersionListCreate(generics.ListCreateAPIView):
+class ModVersionList(generics.ListAPIView):
+    queryset = ModVersion.objects.all()
     serializer_class = ModVersionSerializer
 
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = (IsAuthenticated,)
+    def get_object(self):
+        mod_id = self.kwargs.get('id')
+        version_id = self.kwargs.get('version_id')
 
-    def get_queryset(self):
-        return ModVersion.objects.filter()
+        mod = Mod.objects.get(id=mod_id)
 
-    def perform_create(self, serializer):
-        serializer.save()
+        return ModVersion.objects.get(version_id=version_id, mod=mod)
 
-class ModVersionRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+class ModVersionRetrieve(generics.RetrieveAPIView):
+    queryset = ModVersion.objects.all()
     serializer_class = ModVersionSerializer
 
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = (IsAuthenticated,)
-
-    def get_queryset(self):
-        return ModVersion.objects.filter()
-
-class TexturePackListCreate(generics.ListCreateAPIView):
+class TexturePackList(generics.ListAPIView):
+    queryset = TexturePack.objects.all()
     serializer_class = TexturePackSerializer
 
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = (IsAuthenticated,)
-
-    def get_queryset(self):
-        return TexturePack.objects.filter()
-
-    def perform_create(self, serializer):
-        serializer.save()
-
-class TexturePackRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+class TexturePackRetrieve(generics.RetrieveAPIView):
+    queryset = TexturePack.objects.all()
     serializer_class = TexturePackSerializer
 
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = (IsAuthenticated,)
-
-    def get_queryset(self):
-        return TexturePack.objects.filter()
-
-class TexturePackVersionListCreate(generics.ListCreateAPIView):
+class TexturePackVersionList(generics.ListAPIView):
+    queryset = TexturePackVersion.objects.all()
     serializer_class = TexturePackVersionSerializer
 
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = (IsAuthenticated,)
-
-    def get_queryset(self):
-        return TexturePackVersion.objects.filter()
-
-    def perform_create(self, serializer):
-        serializer.save()
-
-class TexturePackVersionRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+class TexturePackVersionRetrieve(generics.RetrieveAPIView):
+    queryset = TexturePackVersion.objects.all()
     serializer_class = TexturePackVersionSerializer
 
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = (IsAuthenticated,)
+    def get_object(self):
+        id = self.kwargs.get('id')
+        version_id = self.kwargs.get('version_id')
 
-    def get_queryset(self):
-        return TexturePackVersion.objects.filter()
+        texture_pack = TexturePack.objects.get(id=id)
+
+        return ModVersion.objects.get(version_id=version_id, texture_pack=texture_pack)
 
