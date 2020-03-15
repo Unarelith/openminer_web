@@ -1,7 +1,21 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
-    <div class="mdl-color--white mdl-shadow--2dp dashboard-content mdl-grid" style="margin-top: 1rem;">
-        Hello
+    <style>
+        .infos {
+            padding: 10px 20px 10px 20px;
+        }
+
+        ul.list li {
+          margin-bottom: 10px;
+        }
+    </style>
+    <div class="mdl-color--white mdl-shadow--2dp dashboard-content mdl-grid infos">
+        <h3>Welcome to OpenMiner Content Database</h3>
+        <ul class="list">
+            <li>Repository: <a href="https://github.com/Unarelith/OpenMiner">https://github.com/Unarelith/OpenMiner</a></li>
+            <li>Project wiki: <a href="https://github.com/Unarelith/OpenMiner/wiki">https://github.com/Unarelith/OpenMiner/wiki</a></li>
+            <li>Lua API Documentation: <a href="https://openminer.readthedocs.io/en/latest/">https://openminer.readthedocs.io/en/latest/</a></li>
+        </ul>
     </div>
 {% endblock %}
