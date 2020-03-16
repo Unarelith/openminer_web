@@ -6,6 +6,7 @@
             <thead>
                 <tr>
                     <th class="mdl-data-table__cell--non-numeric">Name</td>
+                    <th class="mdl-data-table__cell--non-numeric">Author</td>
                     <th class="mdl-data-table__cell--non-numeric" colspan="2">Actions</td>
                 </tr>
             </thead>
@@ -14,6 +15,9 @@
                     <tr onclick="window.location.href = '{% url "contentdb:texture_pack_view" texture_pack.id %}'" style="cursor: pointer;">
                         <td class="mdl-data-table__cell--non-numeric" style="width: 100%;">
                             {{ texture_pack.name }}
+                        </td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            {{ texture_pack.user }}
                         </td>
                         <td class="mdl-data-table__cell--non-numeric">
                             {# <a class="mdl-button mdl-button--icon mdl-button--colored" href="{% url 'contentdb:texture_pack_edit' texture_pack.id %}"> #}
@@ -28,7 +32,7 @@
                     </tr>
                 {% empty %}
                     <tr>
-                        <td class="mdl-data-table__cell--non-numeric" colspan="3">No texture packs.</td>
+                        <td class="mdl-data-table__cell--non-numeric" colspan="4">No texture packs.</td>
                     </tr>
                 {% endfor %}
             </tbody>

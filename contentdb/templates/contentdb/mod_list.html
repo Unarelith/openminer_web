@@ -6,6 +6,7 @@
             <thead>
                 <tr>
                     <th class="mdl-data-table__cell--non-numeric">Name</td>
+                    <th class="mdl-data-table__cell--non-numeric">Author</td>
                     <th class="mdl-data-table__cell--non-numeric" colspan="2">Actions</td>
                 </tr>
             </thead>
@@ -14,6 +15,9 @@
                     <tr onclick="window.location.href = '{% url "contentdb:mod_view" mod.id %}'" style="cursor: pointer;">
                         <td class="mdl-data-table__cell--non-numeric" style="width: 100%;">
                             {{ mod.name }}
+                        </td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            {{ mod.user }}
                         </td>
                         <td class="mdl-data-table__cell--non-numeric">
                             {# <a class="mdl-button mdl-button--icon mdl-button--colored" href="{% url 'contentdb:mod_edit' mod.id %}"> #}
@@ -28,7 +32,7 @@
                     </tr>
                 {% empty %}
                     <tr>
-                        <td class="mdl-data-table__cell--non-numeric" colspan="3">No mods.</td>
+                        <td class="mdl-data-table__cell--non-numeric" colspan="4">No mods.</td>
                     </tr>
                 {% endfor %}
             </tbody>
