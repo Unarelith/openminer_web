@@ -25,14 +25,6 @@ class ModVersionList(generics.ListAPIView):
     queryset = ModVersion.objects.all()
     serializer_class = ModVersionSerializer
 
-    def get_object(self):
-        mod_id = self.kwargs.get('id')
-        version_id = self.kwargs.get('pk')
-
-        mod = Mod.objects.get(id=mod_id)
-
-        return ModVersion.objects.get(version_id=version_id, mod=mod)
-
 class ModVersionRetrieve(generics.RetrieveAPIView):
     queryset = ModVersion.objects.all()
     serializer_class = ModVersionSerializer
@@ -52,12 +44,4 @@ class TexturePackVersionList(generics.ListAPIView):
 class TexturePackVersionRetrieve(generics.RetrieveAPIView):
     queryset = TexturePackVersion.objects.all()
     serializer_class = TexturePackVersionSerializer
-
-    def get_object(self):
-        id = self.kwargs.get('id')
-        version_id = self.kwargs.get('pk')
-
-        texture_pack = TexturePack.objects.get(id=id)
-
-        return ModVersion.objects.get(version_id=version_id, texture_pack=texture_pack)
 

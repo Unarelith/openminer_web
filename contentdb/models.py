@@ -28,13 +28,14 @@ class Mod(models.Model):
 
 class ModVersion(models.Model):
     mod = models.ForeignKey(Mod, on_delete=models.CASCADE, related_name="versions")
-    name = models.CharField(max_length=10, null=False, unique=True)
+    name = models.CharField(max_length=10, null=False)
     date = models.DateTimeField(default=timezone.now)
     doc = models.FileField(verbose_name="File", max_length=1000)
 
     class Meta:
         verbose_name = "Mod version"
         ordering = ['date']
+        unique_together = ('mod', 'name')
 
     def __str__(self):
         return self.mod.name + " " + self.name
@@ -53,13 +54,14 @@ class TexturePack(models.Model):
 
 class TexturePackVersion(models.Model):
     texture_pack = models.ForeignKey(TexturePack, on_delete=models.CASCADE, related_name="versions")
-    name = models.CharField(max_length=10, null=False, unique=True)
+    name = models.CharField(max_length=10, null=False)
     date = models.DateTimeField(default=timezone.now)
     doc = models.FileField(verbose_name="File", max_length=1000)
 
     class Meta:
         verbose_name = "Texture pack version"
         ordering = ['date']
+        unique_together = ('texture_pack', 'name')
 
     def __str__(self):
         return self.texture_pack.name + " " + self.name
