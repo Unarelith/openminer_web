@@ -3,3 +3,4 @@ django_mathfilters
 django_widget_tweaks
 django_restframework
 django_rest_swagger
+django-cleanup
