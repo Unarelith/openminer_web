@@ -8,6 +8,9 @@ schema_view = get_swagger_view(title='OpenMiner content API')
 urlpatterns = [
     # path('',                                       schema_view),
 
+    path('news',                                   views.NewsArticleList.as_view()),
+    path('news/<int:pk>',                          views.NewsArticleRetrieve.as_view()),
+
     path('version',                                views.EngineVersionList.as_view()),
     path('version/<int:pk>',                       views.EngineVersionRetrieve.as_view()),
 

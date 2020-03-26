@@ -38,9 +38,11 @@
             </tbody>
         </table>
     </div>
+{% if user.is_staff %}
     <div class="mdl-layout__content dashboard-button-add">
         <a href="{% url 'contentdb:texture_pack_new' %}" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--teal-400" style="margin: 5px;">
             <i class="material-icons">add</i>
         </a>
     </div>
+{% endif %}
 {% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}News{% endblock %}
+{% block content %}
+    <style>
+        .infos {
+            padding: 10px 20px 10px 20px;
+        }
+    </style>
+    <div class="mdl-color--white mdl-shadow--2dp dashboard-content mdl-grid infos">
+        <small>{{ article.date|date:'d/M/Y'}}</small>
+        <h3 class="mdl-cell--12-col">{{ article.title }}</h3>
+        <p class="mdl-cell--12-col">{{ article.content }}</p>
+    </div>
+{% endblock %}

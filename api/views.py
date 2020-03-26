@@ -3,7 +3,9 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.permissions import IsAuthenticated
 
 from contentdb.models import EngineVersion, Mod, ModVersion, TexturePack, TexturePackVersion
-from .serializers import EngineVersionSerializer, ModSerializer, ModVersionSerializer, TexturePackSerializer, TexturePackVersionSerializer
+from homepage.models import NewsArticle
+
+from .serializers import EngineVersionSerializer, ModSerializer, ModVersionSerializer, TexturePackSerializer, TexturePackVersionSerializer, NewsArticleSerializer
 
 class EngineVersionList(generics.ListAPIView):
     queryset = EngineVersion.objects.all()
@@ -44,4 +46,12 @@ class TexturePackVersionList(generics.ListAPIView):
 class TexturePackVersionRetrieve(generics.RetrieveAPIView):
     queryset = TexturePackVersion.objects.all()
     serializer_class = TexturePackVersionSerializer
+
+class NewsArticleList(generics.ListAPIView):
+    queryset = NewsArticle.objects.all()
+    serializer_class = NewsArticleSerializer
+
+class NewsArticleRetrieve(generics.RetrieveAPIView):
+    queryset = NewsArticle.objects.all()
+    serializer_class = NewsArticleSerializer
 

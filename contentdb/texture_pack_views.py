@@ -32,7 +32,7 @@ def new(request):
             return redirect(reverse('contentdb:texture_pack_list') + '?new=ko', permanent=True)
 
     model_name = "texture_pack"
-    return render(request, 'contentdb/object_new.html', locals())
+    return render(request, 'object_new.html', locals())
 
 @staff_member_required
 def edit(request, id):
@@ -55,7 +55,7 @@ def edit(request, id):
 
     model_name = "texture_pack"
     model_id = texture_pack.id
-    return render(request, 'contentdb/object_edit.html', locals())
+    return render(request, 'object_edit.html', locals())
 
 @staff_member_required
 def remove(request, id):

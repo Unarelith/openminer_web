@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from contentdb.models import EngineVersion, Mod, ModVersion, TexturePack, TexturePackVersion
+from homepage.models import NewsArticle
 
 class EngineVersionSerializer(serializers.ModelSerializer):
     class Meta:
@@ -25,5 +26,10 @@ class TexturePackSerializer(serializers.ModelSerializer):
 class TexturePackVersionSerializer(serializers.ModelSerializer):
     class Meta:
         model = TexturePackVersion
+        fields = '__all__'
+
+class NewsArticleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NewsArticle
         fields = '__all__'
 

@@ -1,5 +1,8 @@
 from django.shortcuts import render
 
+from .models import NewsArticle
+
 def home(request):
-    return render(request, 'homepage/home.html')
+    news_articles = NewsArticle.objects.all()
+    return render(request, 'homepage/home.html', locals())
 

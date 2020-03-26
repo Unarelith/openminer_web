@@ -18,4 +18,22 @@
             <li>Lua API Documentation: <a href="https://openminer.readthedocs.io/en/latest/">https://openminer.readthedocs.io/en/latest/</a></li>
         </ul>
     </div>
+
+{% for article in news_articles %}
+    <br />
+
+    <div class="mdl-color--white mdl-shadow--2dp dashboard-content mdl-grid infos">
+        <small>{{ article.date|date:'d/M/Y'}}</small>
+        <h3 class="mdl-cell--12-col">{{ article.title }}</h3>
+        <p class="mdl-cell--12-col">{{ article.content }}</p>
+    </div>
+{% endfor %}
+
+{% if user.is_staff %}
+    <div class="mdl-layout__content dashboard-button-add">
+        <a href="{% url 'homepage:news_article_new' %}" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--teal-400" style="margin: 5px;">
+            <i class="material-icons">add</i>
+        </a>
+    </div>
+{% endif %}
 {% endblock %}

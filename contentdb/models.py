@@ -16,7 +16,7 @@ class EngineVersion(models.Model):
 
 class Mod(models.Model):
     name = models.CharField(max_length=100)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="mods")
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, related_name="mods", null=True)
     date = models.DateTimeField(default=timezone.now)
 
     class Meta:
@@ -42,7 +42,7 @@ class ModVersion(models.Model):
 
 class TexturePack(models.Model):
     name = models.CharField(max_length=100)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="texture_packs")
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, related_name="texture_packs", null=True)
     date = models.DateTimeField(default=timezone.now)
 
     class Meta:

@@ -1,0 +1,12 @@
+{% load widget_tweaks %}
+
+<div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+    {{ form.title|add_class:"mdl-textfield__input" }}
+    {{ form.title|add_label_class:"mdl-textfield__label" }}
+</div>
+
+<div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+    {{ form.content|add_class:"mdl-textfield__input" }}
+    {{ form.content|add_label_class:"mdl-textfield__label" }}
+</div>
+
