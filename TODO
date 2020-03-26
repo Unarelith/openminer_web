@@ -5,9 +5,13 @@ TODO
 • DONE: Create `new`, `edit`, `delete` views for mods/texture packs
 • DONE: Create news page + API
 • DONE: User API
+• TODO: Engine version views
 
 # Milestone 2
 
+• TODO: `Mod` and `TexturePack` should have a `stringID` field
+• TODO: Flag `is_verified` for `ModVersion` and `TexturePackVersion`
+• TODO: Unverified downloads should trigger a warning
 • TODO: User subscription
 • TODO: “Reset password” option when logging-in
 • TODO: User profile page
