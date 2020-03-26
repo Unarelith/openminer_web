@@ -26,8 +26,10 @@ def new(request):
         except:
             form_ok = False
 
-        return redirect(reverse('contentdb:mod_list')
-                + (("?new=" + str(mod.id)) if form_ok == True else '?new=ko'), permanent=True)
+        if form_ok:
+            return redirect(reverse('contentdb:mod_view', kwargs={"id": mod.id}), permanent=True)
+        else:
+            return redirect(reverse('contentdb:mod_list') + '?new=ko', permanent=True)
 
     model_name = "mod"
     return render(request, 'contentdb/object_new.html', locals())
@@ -45,8 +47,11 @@ def edit(request, id):
             mod.save()
         except:
             form_ok = False
-        return redirect(reverse('contentdb:mod_list')
-                + (("?edit=" + str(mod.id)) if form_ok == True else '?edit=ko'), permanent=True)
+
+        if form_ok:
+            return redirect(reverse('contentdb:mod_view', kwargs={"id": mod.id}), permanent=True)
+        else:
+            return redirect(reverse('contentdb:mod_list') + '?edit=ko', permanent=True)
 
     model_name = "mod"
     model_id = mod.id

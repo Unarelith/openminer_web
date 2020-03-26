@@ -26,8 +26,10 @@ def new(request):
         except:
             form_ok = False
 
-        return redirect(reverse('contentdb:texture_pack_list')
-                + (("?new=" + str(texture_pack.id)) if form_ok == True else '?new=ko'), permanent=True)
+        if form_ok:
+            return redirect(reverse('contentdb:texture_pack_view', kwargs={"id": texture_pack.id}), permanent=True)
+        else:
+            return redirect(reverse('contentdb:texture_pack_list') + '?new=ko', permanent=True)
 
     model_name = "texture_pack"
     return render(request, 'contentdb/object_new.html', locals())
@@ -45,8 +47,11 @@ def edit(request, id):
             texture_pack.save()
         except:
             form_ok = False
-        return redirect(reverse('contentdb:texture_pack_list')
-                + (("?edit=" + str(texture_pack.id)) if form_ok == True else '?edit=ko'), permanent=True)
+
+        if form_ok:
+            return redirect(reverse('contentdb:texture_pack_view', kwargs={"id": texture_pack.id}), permanent=True)
+        else:
+            return redirect(reverse('contentdb:texture_pack_list') + '?edit=ko', permanent=True)
 
     model_name = "texture_pack"
     model_id = texture_pack.id
