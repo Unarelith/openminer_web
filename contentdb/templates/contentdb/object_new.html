@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Add {{ model_name }}{% endblock %}
+{% block content %}
+    <form action="{% url 'contentdb:'|add:model_name|add:'_new' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mdl-grid dashboard-content mdl-color--white mdl-shadow--2dp">
+            <div class="mdl-grid mdl-cell mdl-cell--12-col">
+                {% if form.errors %}
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <div class="mdl-color-text--red-600">
+                                    <strong>"{{ field.name }}": {{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                            <div class="mdl-color-text--red-600">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% include 'contentdb/'|add:model_name|add:'_fields.html' %}
+
+                <div class="mdl-cell mdl-cell--12-col">
+                    <input type="submit" value="Submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" />
+                    <a class="mdl-button mdl-js-button mdl-button--raised" onclick="window.history.back();">
+                        Cancel
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

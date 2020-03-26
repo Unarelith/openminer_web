@@ -20,14 +20,14 @@
                             {{ mod.user }}
                         </td>
                         <td class="mdl-data-table__cell--non-numeric">
-                            {# <a class="mdl-button mdl-button--icon mdl-button--colored" href="{% url 'contentdb:mod_edit' mod.id %}"> #}
+                            <a class="mdl-button mdl-button--icon mdl-button--colored" href="{% url 'contentdb:mod_edit' mod.id %}">
                                 <i class="material-icons">edit</i>
-                            {# </a> #}
+                            </a>
                         </td>
                         <td class="mdl-data-table__cell--non-numeric">
-                            {# <a class="mdl-button mdl-button--icon mdl-color-text--red-800" href="{% url 'contentdb:mod_remove' mod.id %}" onclick="return confirm('Are you sure?');"> #}
+                            <a class="mdl-button mdl-button--icon mdl-color-text--red-800" href="{% url 'contentdb:mod_remove' mod.id %}" onclick="return confirm('Are you sure?');">
                                 <i class="material-icons">delete</i>
-                            {# </a> #}
+                            </a>
                         </td>
                     </tr>
                 {% empty %}
@@ -37,5 +37,10 @@
                 {% endfor %}
             </tbody>
         </table>
+    </div>
+    <div class="mdl-layout__content dashboard-button-add">
+        <a href="{% url 'contentdb:mod_new' %}" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--teal-400" style="margin: 5px;">
+            <i class="material-icons">add</i>
+        </a>
     </div>
 {% endblock %}
