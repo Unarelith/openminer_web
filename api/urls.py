@@ -11,6 +11,9 @@ urlpatterns = [
     path('news',                                   views.NewsArticleList.as_view()),
     path('news/<int:pk>',                          views.NewsArticleRetrieve.as_view()),
 
+    path('user',                                   views.UserList.as_view()),
+    path('user/<int:pk>',                          views.UserRetrieve.as_view()),
+
     path('version',                                views.EngineVersionList.as_view()),
     path('version/<int:pk>',                       views.EngineVersionRetrieve.as_view()),
 

@@ -4,5 +4,11 @@ TODO
 
 • DONE: Create `new`, `edit`, `delete` views for mods/texture packs
 • DONE: Create news page + API
-• TODO: User profile page + API
+• DONE: User API
+
+# Milestone 2
+
+• TODO: User subscription
+• TODO: “Reset password” option when logging-in
+• TODO: User profile page
 

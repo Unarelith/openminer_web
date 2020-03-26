@@ -1,3 +1,5 @@
+from django.contrib.auth.models import User
+
 from rest_framework import serializers
 
 from contentdb.models import EngineVersion, Mod, ModVersion, TexturePack, TexturePackVersion
@@ -32,4 +34,9 @@ class NewsArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = NewsArticle
         fields = '__all__'
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username']
 

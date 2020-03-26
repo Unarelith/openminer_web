@@ -1,3 +1,5 @@
+from django.contrib.auth.models import User
+
 from rest_framework import generics
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
@@ -5,7 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 from contentdb.models import EngineVersion, Mod, ModVersion, TexturePack, TexturePackVersion
 from homepage.models import NewsArticle
 
-from .serializers import EngineVersionSerializer, ModSerializer, ModVersionSerializer, TexturePackSerializer, TexturePackVersionSerializer, NewsArticleSerializer
+from .serializers import EngineVersionSerializer, ModSerializer, ModVersionSerializer, TexturePackSerializer, TexturePackVersionSerializer, NewsArticleSerializer, UserSerializer
 
 class EngineVersionList(generics.ListAPIView):
     queryset = EngineVersion.objects.all()
@@ -54,4 +56,12 @@ class NewsArticleList(generics.ListAPIView):
 class NewsArticleRetrieve(generics.RetrieveAPIView):
     queryset = NewsArticle.objects.all()
     serializer_class = NewsArticleSerializer
+
+class UserList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class UserRetrieve(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
