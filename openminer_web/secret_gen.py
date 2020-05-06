@@ -1,5 +1,6 @@
 import os
 import sys
+import uuid
 
 def find_or_create_secret_key():
     """
@@ -21,3 +22,21 @@ def find_or_create_secret_key():
             f.write("# Django secret key\n# Do NOT check this into version control.\n\nSECRET_KEY = '%s'\n" % new_key)
         from secret_key import SECRET_KEY
         return SECRET_KEY
+
+def find_or_create_uuid():
+    """
+    Look for instance_uuid.py and return the UUID entry in it if the file exists.
+    Otherwise, generate a new UUID, save it in instance_uuid.py, and return the UUID.
+    """
+    UUID_DIR = os.path.dirname(__file__)
+    UUID_FILEPATH = os.path.join(UUID_DIR, 'instance_uuid.py')
+    sys.path.insert(1, UUID_DIR)
+
+    if os.path.isfile(UUID_FILEPATH):
+        from instance_uuid import UUID
+        return UUID
+    else:
+        with open(UUID_FILEPATH, 'w') as f:
+            f.write("# Instance UUID\n\n\nUUID = '%s'\n" % uuid.uuid4())
+        from instance_uuid import UUID
+        return UUID

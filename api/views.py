@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.http import JsonResponse
 
 from rest_framework import generics
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
@@ -7,7 +8,11 @@ from rest_framework.permissions import IsAuthenticated
 from contentdb.models import EngineVersion, Mod, ModVersion, TexturePack, TexturePackVersion
 from homepage.models import NewsArticle
 
+from openminer_web.settings import INSTANCE_UUID
 from .serializers import EngineVersionSerializer, ModSerializer, ModVersionSerializer, TexturePackSerializer, TexturePackVersionSerializer, NewsArticleSerializer, UserSerializer
+
+def get_instance_info(request):
+    return JsonResponse({'uuid': INSTANCE_UUID})
 
 class EngineVersionList(generics.ListAPIView):
     queryset = EngineVersion.objects.all()

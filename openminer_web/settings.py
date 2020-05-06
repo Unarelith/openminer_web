@@ -11,13 +11,13 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-from .secret_gen import find_or_create_secret_key
+from .secret_gen import find_or_create_secret_key, find_or_create_uuid
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
+# Instance UUID
+INSTANCE_UUID = find_or_create_uuid()
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = find_or_create_secret_key()

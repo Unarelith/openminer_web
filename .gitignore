@@ -5,4 +5,5 @@ __pycache__/
 media/
 *.rar
 secret_key.py
+instance_uuid.py
 .bdat
