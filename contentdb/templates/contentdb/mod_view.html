@@ -51,7 +51,13 @@
                                     {{ version.date|date:'d/m/Y H:m' }}
                                 </td>
                                 <td class="mdl-data-table__cell--non-numeric">
-                                    <a class="mdl-button mdl-button--icon mdl-button--colored" href="{{ version.doc.url }}">
+                                    <a class="mdl-button mdl-button--icon mdl-button--colored" href="
+                                        {% if version.file_url %}
+                                            {{ version.file_url }}
+                                        {% elif version.file_doc %}
+                                            {{ version.file_doc.url }}
+                                        {% endif %}
+                                        ">
                                         <i class="material-icons">cloud_download</i>
                                     </a>
                                 </td>

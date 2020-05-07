@@ -3,9 +3,16 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 class EngineVersion(models.Model):
-    name = models.CharField(max_length=10, null=False, unique=True)
+    name = models.CharField(max_length=20, null=False, unique=True)
     date = models.DateTimeField(default=timezone.now)
-    doc = models.FileField(verbose_name="File", max_length=1000)
+
+    windows_url = models.URLField(blank=True, null=True)
+    linux_url = models.URLField(blank=True, null=True)
+    macos_url = models.URLField(blank=True, null=True)
+
+    windows_zip = models.FileField(verbose_name="Windows ZIP", max_length=1000, blank=True, null=True)
+    linux_zip = models.FileField(verbose_name="Linux ZIP", max_length=1000, blank=True, null=True)
+    macos_zip = models.FileField(verbose_name="macOS ZIP", max_length=1000, blank=True, null=True)
 
     class Meta:
         verbose_name = "Engine version"
@@ -28,9 +35,11 @@ class Mod(models.Model):
 
 class ModVersion(models.Model):
     mod = models.ForeignKey(Mod, on_delete=models.CASCADE, related_name="versions")
-    name = models.CharField(max_length=10, null=False)
+    name = models.CharField(max_length=20, null=False)
     date = models.DateTimeField(default=timezone.now)
-    doc = models.FileField(verbose_name="File", max_length=1000)
+
+    file_url = models.URLField(null=True, blank=True)
+    file_zip = models.FileField(verbose_name="File", max_length=1000, null=True, blank=True);
 
     class Meta:
         verbose_name = "Mod version"
@@ -54,9 +63,11 @@ class TexturePack(models.Model):
 
 class TexturePackVersion(models.Model):
     texture_pack = models.ForeignKey(TexturePack, on_delete=models.CASCADE, related_name="versions")
-    name = models.CharField(max_length=10, null=False)
+    name = models.CharField(max_length=20, null=False)
     date = models.DateTimeField(default=timezone.now)
-    doc = models.FileField(verbose_name="File", max_length=1000)
+
+    file_url = models.URLField(null=True, blank=True)
+    file_zip = models.FileField(verbose_name="File", max_length=1000, null=True, blank=True);
 
     class Meta:
         verbose_name = "Texture pack version"
