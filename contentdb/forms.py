@@ -1,6 +1,11 @@
 from django import forms
 
-from .models import Mod, TexturePack
+from .models import EngineVersion, Mod, TexturePack
+
+class EngineVersionForm(forms.ModelForm):
+    class Meta:
+        model = EngineVersion
+        fields = ['name']
 
 class ModForm(forms.ModelForm):
     class Meta:

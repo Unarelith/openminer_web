@@ -2,11 +2,17 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.urls import path
 
-from . import mod_views, texture_pack_views
+from . import version_views, mod_views, texture_pack_views
 
 app_name = "contentdb"
 
 urlpatterns = [
+    path('version/<int:id>',              version_views.view,         name='version_view'),
+    path('version/list',                  version_views.list,         name='version_list'),
+    path('version/new',                   version_views.new,          name='version_new'),
+    path('version/edit/<int:id>',         version_views.edit,         name='version_edit'),
+    path('version/remove/<int:id>',       version_views.remove,       name='version_remove'),
+
     path('mod/<int:id>',                  mod_views.view,             name='mod_view'),
     path('mod/list',                      mod_views.list,             name='mod_list'),
     path('mod/new',                       mod_views.new,              name='mod_new'),

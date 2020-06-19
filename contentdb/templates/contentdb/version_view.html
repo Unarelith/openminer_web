@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}OpenMiner {{ version.name }}{% endblock %}
+{% block content %}
+    <div class="mdl-grid dashboard-content">
+        <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+            <h4 class="mdl-cell mdl-cell--2-col">Informations</h4>
+            <div class="dashboard-scrollable-zone mdl-cell mdl-cell--12-col">
+                <table border="1" class="mdl-data-table mdl-js-data-table">
+                    <tbody>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric"><b>ID</b></td>
+                            <td class="mdl-data-table__cell--non-numeric">{{ version.id }}</td>
+                        </tr>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric"><b>Name</b></td>
+                            <td class="mdl-data-table__cell--non-numeric">{{ version.name }}</td>
+                        </tr>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric"><b>Date</b></td>
+                            <td class="mdl-data-table__cell--non-numeric">{{ version.date|date:'d/m/Y H:m' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="mdl-grid dashboard-content">
+        <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+            <h4 class="mdl-cell mdl-cell--2-col">Downloads</h4>
+            <div class="mdl-cell mdl-cell--12-col">
+                {% if version.windows_url %}
+                    <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                        href="{{ version.windows_url }}">Windows</a>
+                {% elif version.windows_zip %}
+                    <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                        href="{{ version.windows_zip.url }}">Windows</a>
+                {% endif %}
+
+                {% if version.linux_url %}
+                    <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                        href="{{ version.linux_url }}">Linux</a>
+                {% elif version.linux_zip %}
+                    <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                        href="{{ version.linux_zip.url }}">Linux</a>
+                {% endif %}
+
+                {% if version.macos_url %}
+                    <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                        href="{{ version.macos_url }}">MacOS X</a>
+                {% elif version.macos_zip %}
+                    <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                        href="{{ version.macos_zip.url }}">MacOS X</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

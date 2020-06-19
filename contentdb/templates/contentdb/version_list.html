@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Engine versions{% endblock %}
+{% block content %}
+    <div class="dashboard-scrollable-zone dashboard-content mdl-grid">
+        <table border="1" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Name</td>
+                    <th class="mdl-data-table__cell--non-numeric" colspan="2">Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for version in versions %}
+                    <tr onclick="window.location.href = '{% url "contentdb:version_view" version.id %}'" style="cursor: pointer;">
+                        <td class="mdl-data-table__cell--non-numeric" style="width: 100%;">
+                            {{ version.name }}
+                        </td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <a class="mdl-button mdl-button--icon mdl-button--colored" href="{% url 'contentdb:version_edit' version.id %}">
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <a class="mdl-button mdl-button--icon mdl-color-text--red-800" href="{% url 'contentdb:version_remove' version.id %}" onclick="return confirm('Are you sure?');">
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric" colspan="3">No versions.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% if user.is_staff %}
+    <div class="mdl-layout__content dashboard-button-add">
+        <a href="{% url 'contentdb:version_new' %}" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--teal-400" style="margin: 5px;">
+            <i class="material-icons">add</i>
+        </a>
+    </div>
+{% endif %}
+{% endblock %}
+
